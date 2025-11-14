@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CleanFlow — Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🚛 CleanFlow — Prototype</div>
+    <nav>
+      <button class="nav-btn" data-target="citizen">Citizen</button>
+      <button class="nav-btn" data-target="driver">Driver</button>
+      <button class="nav-btn" data-target="admin">Admin</button>
+      <button class="nav-btn" data-target="about">About</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    
+    <section id="citizen" class="page">
+      <h2>Citizen View</h2>
+      <p>See simulated truck approaching your area and get alerts.</p>
+
+      <div class="map-card">
+        <div id="mapPlaceholder" class="map">
+        
+          <div id="truckMarker" class="truck" style="left:5%;">🚚</div>
+        
+          <div class="area-marker" style="left:20%;">Sector A</div>
+          <div class="area-marker" style="left:45%;">Sector B</div>
+          <div class="area-marker" style="left:70%;">Sector C</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <label>Your area:
+          <select id="citizen-area">
+            <option value="Sector A">Sector A</option>
+            <option value="Sector B">Sector B</option>
+            <option value="Sector C">Sector C</option>
+          </select>
+        </label>
+        <button id="subscribeBtn">Subscribe (simulate alerts)</button>
+        <button id="simulateApproachBtn">Simulate Truck Approach</button>
+      </div>
+
+      <div id="citizenNotifications" class="notifications"></div>
+    </section>
+
+    
+    <section id="driver" class="page" style="display:none;">
+      <h2>Driver Interface</h2>
+      <p>Simulate route movement and mark areas collected.</p>
+
+      <div class="panel">
+        <label>Current simulated coordinates:
+          <input id="driver-lat" value="28.7041" />
+          <input id="driver-lng" value="77.1025" />
+        </label>
+      </div>
+
+      <div class="panel">
+        <label>Select area to mark:
+          <select id="driver-area">
+            <option>Sector A</option>
+            <option>Sector B</option>
+            <option>Sector C</option>
+          </select>
+        </label>
+        <button id="markAreaBtn">Mark Area Collected</button>
+      </div>
+
+      <div class="panel">
+        <button id="startAutoBtn">Start Auto Route (simulate movement)</button>
+        <button id="stopAutoBtn" disabled>Stop Auto Route</button>
+      </div>
+
+      <div class="panel small">
+        <strong>Driver Log</strong>
+        <ul id="driverLog" class="log"></ul>
+      </div>
+    </section>
+
+
+    <section id="admin" class="page" style="display:none;">
+      <h2>Admin Dashboard</h2>
+      <p>View collection coverage, recent marks, and basic analytics.</p>
+
+      <div class="panel">
+        <button id="refreshAdmin">Refresh</button>
+        <button id="exportJson">Export Collected Data (JSON)</button>
+        <button id="clearData">Clear All Data</button>
+      </div>
+
+      <div class="panel">
+        <strong>Live Truck Position (simulated)</strong>
+        <div id="adminTruckPos">No data yet</div>
+      </div>
+
+      <div class="panel">
+        <h3>Collected Areas (most recent first)</h3>
+        <table id="collectedTable">
+          <thead><tr><th>Area</th><th>Lat</th><th>Lng</th><th>Time</th><th>By</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="panel small">
+        <h3>Analytics</h3>
+        <div id="analytics">No data</div>
+      </div>
+    </section>
+
+
+    <section id="about" class="page" style="display:none;">
+      <h2>About this Prototype</h2>
+      <p>This prototype demonstrates the CleanFlow flow without live GPS or external APIs. All data is local and simulated.</p>
+      <ul>
+        <li>Driver: mark areas collected, start/stop simulated route</li>
+        <li>Citizen: subscribe to simulated alerts and see truck approach</li>
+        <li>Admin: view collected areas and simple analytics</li>
+      </ul>
+
+      <h3>Usage for hackathon/demo</h3>
+      <ol>
+        <li>Open <strong>Driver</strong> tab and press <em>Start Auto Route</em></li>
+        <li>Open <strong>Citizen</strong> and subscribe to your area</li>
+        <li>As driver marks areas, Admin updates in real-time</li>
+      </ol>
+    </section>
+  </main>
+
+  <div id="toastWrap"></div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
