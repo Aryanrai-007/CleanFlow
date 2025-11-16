@@ -1,6 +1,6 @@
 🚛 CleanFlow — Smart Waste Collection Tracker
 
-(https://cleanflow01.netlify.app(prototype link)
+(https://cleanflow01.netlify.app)  - prototype link
 
 Team CodeBlooded
 Aryan Rai • Suraj Trivedi • Mridul Mani Tripathi
